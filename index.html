@@ -365,6 +365,290 @@
                 opacity: 0.5;
             }
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a202c;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #718096;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .close-btn:hover {
+            background: #f1f5f9;
+            color: #1a202c;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: #718096;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .detail-value {
+            color: #1a202c;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .approval-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            margin-bottom: 16px;
+            transition: all 0.2s;
+        }
+
+        .approval-item:hover {
+            border-color: #cbd5e0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .approval-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .approval-title {
+            font-weight: 700;
+            color: #1a202c;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .approval-dept {
+            color: #718096;
+            font-size: 13px;
+        }
+
+        .approval-amount {
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .approval-details {
+            color: #4a5568;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .approval-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-btn.view {
+            background: #f1f5f9;
+            color: #4a5568;
+        }
+
+        .action-btn.approve {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .action-btn.reject {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            min-width: 300px;
+            animation: slideInRight 0.3s ease-out;
+        }
+
+        .notification.active {
+            display: flex;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .notification.success {
+            border-left: 4px solid #10b981;
+        }
+
+        .notification.error {
+            border-left: 4px solid #ef4444;
+        }
+
+        .notification-icon {
+            font-size: 24px;
+        }
+
+        .notification-text {
+            flex: 1;
+            color: #1a202c;
+            font-weight: 600;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -479,6 +763,66 @@
         <div class="bottom-grid">
             <div class="card">
                 <div class="card-header">
+                    <h2 class="card-title">Pending Approvals</h2>
+                    <span class="badge warning">7 Requests</span>
+                </div>
+                <div id="approvalsContainer">
+                    <div class="approval-item" data-request-id="1">
+                        <div class="approval-header">
+                            <div>
+                                <div class="approval-title">IT Infrastructure Upgrade</div>
+                                <div class="approval-dept">Information Technology</div>
+                            </div>
+                            <div class="approval-amount">$82,000</div>
+                        </div>
+                        <div class="approval-details">
+                            New server hardware and network equipment to support increased data processing requirements. Expected completion: Q1 2026.
+                        </div>
+                        <div class="approval-actions">
+                            <button class="action-btn view" onclick="showRequestDetail(1)">View Details</button>
+                            <button class="action-btn approve" onclick="approveRequest(1, 'IT Infrastructure Upgrade', 82000)">Approve</button>
+                            <button class="action-btn reject" onclick="rejectRequest(1, 'IT Infrastructure Upgrade')">Reject</button>
+                        </div>
+                    </div>
+                    <div class="approval-item" data-request-id="2">
+                        <div class="approval-header">
+                            <div>
+                                <div class="approval-title">Marketing Campaign Q1</div>
+                                <div class="approval-dept">Marketing</div>
+                            </div>
+                            <div class="approval-amount">$45,000</div>
+                        </div>
+                        <div class="approval-details">
+                            Digital advertising campaign across social media and search platforms. ROI projected at 3.2x investment.
+                        </div>
+                        <div class="approval-actions">
+                            <button class="action-btn view" onclick="showRequestDetail(2)">View Details</button>
+                            <button class="action-btn approve" onclick="approveRequest(2, 'Marketing Campaign Q1', 45000)">Approve</button>
+                            <button class="action-btn reject" onclick="rejectRequest(2, 'Marketing Campaign Q1')">Reject</button>
+                        </div>
+                    </div>
+                    <div class="approval-item" data-request-id="3">
+                        <div class="approval-header">
+                            <div>
+                                <div class="approval-title">Employee Training Program</div>
+                                <div class="approval-dept">Human Resources</div>
+                            </div>
+                            <div class="approval-amount">$28,500</div>
+                        </div>
+                        <div class="approval-details">
+                            Professional development courses and certifications for 45 employees across 3 departments.
+                        </div>
+                        <div class="approval-actions">
+                            <button class="action-btn view" onclick="showRequestDetail(3)">View Details</button>
+                            <button class="action-btn approve" onclick="approveRequest(3, 'Employee Training Program', 28500)">Approve</button>
+                            <button class="action-btn reject" onclick="rejectRequest(3, 'Employee Training Program')">Reject</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
                     <h2 class="card-title">Department Breakdown</h2>
                     <span class="badge warning">2 Over Budget</span>
                 </div>
@@ -550,7 +894,9 @@
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div class="bottom-grid" style="margin-top: 20px;">
             <div class="card">
                 <div class="card-header">
                     <h2 class="card-title">Quick Stats</h2>
@@ -583,10 +929,97 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Budget Controls</h2>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <div style="background: #f8fafc; padding: 16px; border-radius: 8px; border: 2px solid #e2e8f0;">
+                        <div style="color: #718096; font-size: 14px; margin-bottom: 8px; font-weight: 600;">Auto-Approval Threshold</div>
+                        <div style="font-size: 24px; font-weight: 700; color: #1a202c; margin-bottom: 12px;">$5,000</div>
+                        <div style="color: #718096; font-size: 13px;">Requests below this amount are auto-approved</div>
+                        <button class="btn btn-secondary" style="margin-top: 12px; width: 100%;" onclick="alert('Threshold adjustment feature - Coming in Step 3')">Adjust Threshold</button>
+                    </div>
+                    <div style="background: #fef3c7; padding: 16px; border-radius: 8px; border: 2px solid #fbbf24;">
+                        <div style="color: #92400e; font-size: 14px; margin-bottom: 8px; font-weight: 600;">Risk Alert Level</div>
+                        <div style="font-size: 24px; font-weight: 700; color: #92400e; margin-bottom: 12px;">High</div>
+                        <div style="color: #92400e; font-size: 13px;">3 departments exceeding budget thresholds</div>
+                        <button class="btn btn-primary" style="margin-top: 12px; width: 100%;" onclick="alert('Risk management dashboard - Coming in Step 3')">Manage Risks</button>
+                    </div>
+                    <div style="background: #d1fae5; padding: 16px; border-radius: 8px; border: 2px solid #10b981;">
+                        <div style="color: #065f46; font-size: 14px; margin-bottom: 8px; font-weight: 600;">Automated Workflows</div>
+                        <div style="font-size: 24px; font-weight: 700; color: #065f46; margin-bottom: 12px;">Active</div>
+                        <div style="color: #065f46; font-size: 13px;">12 workflows processing stakeholder inputs</div>
+                        <button class="btn btn-success" style="margin-top: 12px; width: 100%;" onclick="alert('Workflow configuration - Coming in Step 3')">Configure</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <div id="requestModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Request Details</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div id="modalBody">
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification">
+        <span class="notification-icon" id="notificationIcon"></span>
+        <span class="notification-text" id="notificationText"></span>
+    </div>
+
     <script>
+        const requestData = {
+            1: {
+                title: 'IT Infrastructure Upgrade',
+                department: 'Information Technology',
+                amount: 82000,
+                requestedBy: 'John Smith',
+                requestDate: '2025-12-20',
+                category: 'Capital Expenditure',
+                priority: 'High',
+                description: 'New server hardware and network equipment to support increased data processing requirements. This includes 4 new servers, upgraded switches, and fiber optic cabling for the new wing.',
+                justification: 'Current infrastructure is at 95% capacity. Expected growth will exceed capacity by Q1 2026. This upgrade will provide 3-5 years of headroom.',
+                expectedCompletion: 'Q1 2026',
+                roi: '3 years',
+                impactIfRejected: 'System slowdowns, potential outages, inability to onboard new clients'
+            },
+            2: {
+                title: 'Marketing Campaign Q1',
+                department: 'Marketing',
+                amount: 45000,
+                requestedBy: 'Sarah Johnson',
+                requestDate: '2025-12-21',
+                category: 'Marketing',
+                priority: 'Medium',
+                description: 'Comprehensive digital advertising campaign across Google Ads, Facebook, LinkedIn, and Instagram targeting enterprise customers.',
+                justification: 'Q4 campaign generated $144K in revenue from $40K spend. Expanding to new platforms expected to increase reach by 40%.',
+                expectedCompletion: 'Q1 2026',
+                roi: '3.2x projected based on previous campaigns',
+                impactIfRejected: 'Loss of market share to competitors, reduced lead generation'
+            },
+            3: {
+                title: 'Employee Training Program',
+                department: 'Human Resources',
+                amount: 28500,
+                requestedBy: 'Michael Chen',
+                requestDate: '2025-12-22',
+                category: 'Training & Development',
+                priority: 'Medium',
+                description: 'Professional development courses and certifications for 45 employees across Engineering, Sales, and Customer Success departments.',
+                justification: 'Employee survey shows 78% want more training opportunities. Industry certifications increase productivity by 25% and reduce turnover by 15%.',
+                expectedCompletion: 'Q2 2026',
+                roi: 'Reduced turnover saves $180K annually',
+                impactIfRejected: 'Increased employee turnover, skills gap, reduced competitiveness'
+            }
+        };
+
         function updateTime() {
             const now = new Date();
             const formatted = now.toLocaleString('en-US', {
@@ -612,6 +1045,136 @@
                 }
             });
         }, 30000);
+
+        function showRequestDetail(requestId) {
+            const request = requestData[requestId];
+            if (!request) return;
+
+            document.getElementById('modalTitle').textContent = request.title;
+            document.getElementById('modalBody').innerHTML = `
+                <div class="detail-row">
+                    <span class="detail-label">Department</span>
+                    <span class="detail-value">${request.department}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Amount Requested</span>
+                    <span class="detail-value" style="color: #667eea;">$${request.amount.toLocaleString()}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Requested By</span>
+                    <span class="detail-value">${request.requestedBy}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Request Date</span>
+                    <span class="detail-value">${new Date(request.requestDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Category</span>
+                    <span class="detail-value">${request.category}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Priority</span>
+                    <span class="detail-value">${request.priority}</span>
+                </div>
+                <div style="margin-top: 24px;">
+                    <div style="font-weight: 700; color: #1a202c; margin-bottom: 8px;">Description</div>
+                    <div style="color: #4a5568; line-height: 1.6; font-size: 14px;">${request.description}</div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <div style="font-weight: 700; color: #1a202c; margin-bottom: 8px;">Business Justification</div>
+                    <div style="color: #4a5568; line-height: 1.6; font-size: 14px;">${request.justification}</div>
+                </div>
+                <div class="detail-row" style="margin-top: 20px;">
+                    <span class="detail-label">Expected Completion</span>
+                    <span class="detail-value">${request.expectedCompletion}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Expected ROI</span>
+                    <span class="detail-value" style="color: #10b981;">${request.roi}</span>
+                </div>
+                <div style="margin-top: 20px; padding: 16px; background: #fef2f2; border-radius: 8px; border-left: 4px solid #ef4444;">
+                    <div style="font-weight: 700; color: #991b1b; margin-bottom: 8px; font-size: 14px;">Impact if Rejected</div>
+                    <div style="color: #7f1d1d; line-height: 1.6; font-size: 13px;">${request.impactIfRejected}</div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-success" onclick="approveRequestFromModal(${requestId}, '${request.title}', ${request.amount})" style="flex: 1;">
+                        ✓ Approve Request
+                    </button>
+                    <button class="btn btn-danger" onclick="rejectRequestFromModal(${requestId}, '${request.title}')" style="flex: 1;">
+                        ✗ Reject Request
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('requestModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('requestModal').classList.remove('active');
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const icon = document.getElementById('notificationIcon');
+            const text = document.getElementById('notificationText');
+
+            notification.className = `notification ${type} active`;
+            icon.textContent = type === 'success' ? '✓' : '✗';
+            text.textContent = message;
+
+            setTimeout(() => {
+                notification.classList.remove('active');
+            }, 4000);
+        }
+
+        function removeApprovalItem(requestId) {
+            const item = document.querySelector(`[data-request-id="${requestId}"]`);
+            if (item) {
+                item.style.transition = 'all 0.3s ease-out';
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-20px)';
+                setTimeout(() => {
+                    item.remove();
+                    updateApprovalCount();
+                }, 300);
+            }
+        }
+
+        function updateApprovalCount() {
+            const count = document.querySelectorAll('.approval-item').length;
+            const badge = document.querySelector('#approvalsContainer').closest('.card').querySelector('.badge');
+            badge.textContent = `${count} Request${count !== 1 ? 's' : ''}`;
+        }
+
+        function approveRequest(requestId, title, amount) {
+            showNotification(`Approved: ${title} ($${amount.toLocaleString()})`, 'success');
+            removeApprovalItem(requestId);
+        }
+
+        function rejectRequest(requestId, title) {
+            showNotification(`Rejected: ${title}`, 'error');
+            removeApprovalItem(requestId);
+        }
+
+        function approveRequestFromModal(requestId, title, amount) {
+            closeModal();
+            setTimeout(() => {
+                approveRequest(requestId, title, amount);
+            }, 300);
+        }
+
+        function rejectRequestFromModal(requestId, title) {
+            closeModal();
+            setTimeout(() => {
+                rejectRequest(requestId, title);
+            }, 300);
+        }
+
+        document.getElementById('requestModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
