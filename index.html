@@ -649,6 +649,236 @@
             font-weight: 600;
             font-size: 14px;
         }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 8px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tab {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            background: transparent;
+            color: #718096;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .tab:hover {
+            background: #f1f5f9;
+            color: #4a5568;
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 40px;
+            width: 2px;
+            height: calc(100% + 32px);
+            background: #e2e8f0;
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-marker {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 12px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .timeline-period {
+            font-weight: 700;
+            color: #1a202c;
+            font-size: 16px;
+        }
+
+        .timeline-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .timeline-stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            background: #f8fafc;
+            border-radius: 6px;
+        }
+
+        .timeline-stat-label {
+            color: #718096;
+            font-size: 13px;
+        }
+
+        .timeline-stat-value {
+            color: #1a202c;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            color: #1a202c;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table th {
+            background: #f8fafc;
+            color: #718096;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .comparison-table td {
+            color: #1a202c;
+            font-size: 14px;
+        }
+
+        .comparison-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .variance {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .variance.positive {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .variance.negative {
+            background: #fee2e2;
+            color: #991b1b;
+        }
     </style>
 </head>
 <body>
@@ -659,6 +889,14 @@
                 <div class="last-updated">Last updated: <span id="lastUpdate"></span></div>
             </div>
         </header>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('dashboard')">Dashboard</button>
+            <button class="tab" onclick="switchTab('history')">Historical Data</button>
+            <button class="tab" onclick="switchTab('submit')">Submit Budget</button>
+        </div>
+
+        <div id="dashboard" class="tab-content active">
 
         <div class="stats-grid">
             <div class="stat-card">
@@ -956,6 +1194,332 @@
                 </div>
             </div>
         </div>
+        </div>
+
+        <div id="history" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Budget History & Comparison</h2>
+                    <div style="display: flex; gap: 8px;">
+                        <select class="form-select" style="width: auto;" onchange="updateHistoryView(this.value)">
+                            <option value="2025">FY 2025 (Current)</option>
+                            <option value="2024">FY 2024</option>
+                            <option value="2023">FY 2023</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">Q4</div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-period">Q4 2025 (Current)</div>
+                                <div class="timeline-status" style="background: #fef3c7; color: #92400e;">In Progress</div>
+                            </div>
+                            <div class="timeline-grid">
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Budgeted</span>
+                                    <span class="timeline-stat-value">$612,500</span>
+                                </div>
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Actual</span>
+                                    <span class="timeline-stat-value">$275,600</span>
+                                </div>
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Utilization</span>
+                                    <span class="timeline-stat-value">45%</span>
+                                </div>
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Days Remaining</span>
+                                    <span class="timeline-stat-value">97</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">Q3</div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-period">Q3 2025</div>
+                                <div class="timeline-status" style="background: #d1fae5; color: #065f46;">Complete</div>
+                            </div>
+                            <div class="timeline-grid">
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Budgeted</span>
+                                    <span class="timeline-stat-value">$582,500</span>
+                                </div>
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Actual</span>
+                                    <span class="timeline-stat-value">$535,873</span>
+                                </div>
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Utilization</span>
+                                    <span class="timeline-stat-value">92%</span>
+                                </div>
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Variance</span>
+                                    <span class="timeline-stat-value" style="color: #10b981;">-$46,627</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">Q2</div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-period">Q2 2025</div>
+                                <div class="timeline-status" style="background: #d1fae5; color: #065f46;">Complete</div>
+                            </div>
+                            <div class="timeline-grid">
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Budgeted</span>
+                                    <span class="timeline-stat-value">$552,500</span>
+                                </div>
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Actual</span>
+                                    <span class="timeline-stat-value">$486,270</span>
+                                </div>
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Utilization</span>
+                                    <span class="timeline-stat-value">88%</span>
+                                </div>
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Variance</span>
+                                    <span class="timeline-stat-value" style="color: #10b981;">-$66,230</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">Q1</div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-period">Q1 2025</div>
+                                <div class="timeline-status" style="background: #d1fae5; color: #065f46;">Complete</div>
+                            </div>
+                            <div class="timeline-grid">
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Budgeted</span>
+                                    <span class="timeline-stat-value">$702,500</span>
+                                </div>
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Actual</span>
+                                    <span class="timeline-stat-value">$578,800</span>
+                                </div>
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Utilization</span>
+                                    <span class="timeline-stat-value">82%</span>
+                                </div>
+                                <div class="timeline-stat">
+                                    <span class="timeline-stat-label">Variance</span>
+                                    <span class="timeline-stat-value" style="color: #10b981;">-$123,700</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 20px;">
+                <div class="card-header">
+                    <h2 class="card-title">Year-over-Year Comparison</h2>
+                </div>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Department</th>
+                            <th>FY 2025 Budget</th>
+                            <th>FY 2024 Budget</th>
+                            <th>Change</th>
+                            <th>Variance %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Marketing</strong></td>
+                            <td>$244,500</td>
+                            <td>$198,000</td>
+                            <td><span class="variance positive">↑ $46,500</span></td>
+                            <td><span class="variance positive">+23.5%</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>IT Infrastructure</strong></td>
+                            <td>$612,500</td>
+                            <td>$580,000</td>
+                            <td><span class="variance positive">↑ $32,500</span></td>
+                            <td><span class="variance positive">+5.6%</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Human Resources</strong></td>
+                            <td>$450,000</td>
+                            <td>$465,000</td>
+                            <td><span class="variance negative">↓ $15,000</span></td>
+                            <td><span class="variance negative">-3.2%</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Operations</strong></td>
+                            <td>$490,000</td>
+                            <td>$445,000</td>
+                            <td><span class="variance positive">↑ $45,000</span></td>
+                            <td><span class="variance positive">+10.1%</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sales</strong></td>
+                            <td>$653,000</td>
+                            <td>$612,000</td>
+                            <td><span class="variance positive">↑ $41,000</span></td>
+                            <td><span class="variance positive">+6.7%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="submit" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Submit Budget Request</h2>
+                    <span class="badge success">Automated Workflow</span>
+                </div>
+                <form onsubmit="submitBudgetRequest(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Department *</label>
+                            <select class="form-select" required>
+                                <option value="">Select Department</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="it">IT Infrastructure</option>
+                                <option value="hr">Human Resources</option>
+                                <option value="ops">Operations</option>
+                                <option value="sales">Sales</option>
+                                <option value="finance">Finance</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fiscal Period *</label>
+                            <select class="form-select" required>
+                                <option value="">Select Period</option>
+                                <option value="q1-2026">Q1 2026</option>
+                                <option value="q2-2026">Q2 2026</option>
+                                <option value="q3-2026">Q3 2026</option>
+                                <option value="q4-2026">Q4 2026</option>
+                                <option value="fy-2026">Full Year 2026</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Budget Amount ($) *</label>
+                            <input type="number" class="form-input" placeholder="125000" required min="0" step="100">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Category *</label>
+                            <select class="form-select" required>
+                                <option value="">Select Category</option>
+                                <option value="capex">Capital Expenditure</option>
+                                <option value="opex">Operating Expense</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="training">Training & Development</option>
+                                <option value="software">Software & Licenses</option>
+                                <option value="personnel">Personnel</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Request Title *</label>
+                        <input type="text" class="form-input" placeholder="e.g., Q1 2026 Digital Marketing Campaign" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Business Justification *</label>
+                        <textarea class="form-textarea" placeholder="Explain the business need and expected outcomes..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Expected ROI</label>
+                        <input type="text" class="form-input" placeholder="e.g., 3.2x investment, 25% productivity increase">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Priority Level *</label>
+                            <select class="form-select" required>
+                                <option value="">Select Priority</option>
+                                <option value="high">High - Critical for operations</option>
+                                <option value="medium">Medium - Important but not urgent</option>
+                                <option value="low">Low - Nice to have</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Expected Start Date *</label>
+                            <input type="date" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Additional Notes</label>
+                        <textarea class="form-textarea" placeholder="Any additional information or dependencies..." style="min-height: 80px;"></textarea>
+                    </div>
+
+                    <div style="background: #f0f9ff; border: 2px solid #bae6fd; border-radius: 8px; padding: 16px; margin-bottom: 24px;">
+                        <div style="display: flex; gap: 12px; align-items: start;">
+                            <div style="font-size: 20px;">ℹ️</div>
+                            <div>
+                                <div style="font-weight: 600; color: #0c4a6e; margin-bottom: 4px;">Automated Workflow Process</div>
+                                <div style="color: #075985; font-size: 13px; line-height: 1.6;">
+                                    Your submission will be automatically routed to the appropriate approvers based on amount and department. 
+                                    You'll receive email notifications at each stage of the approval process.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary" style="flex: 1;">
+                            Submit Budget Request
+                        </button>
+                        <button type="reset" class="btn btn-secondary">
+                            Clear Form
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card" style="margin-top: 20px;">
+                <div class="card-header">
+                    <h2 class="card-title">Your Recent Submissions</h2>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div style="padding: 16px; border: 2px solid #e2e8f0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-weight: 700; color: #1a202c; margin-bottom: 4px;">Q2 2026 Employee Training</div>
+                            <div style="color: #718096; font-size: 13px;">Human Resources • $35,000 • Submitted Dec 18, 2025</div>
+                        </div>
+                        <span class="badge warning">Pending Review</span>
+                    </div>
+                    <div style="padding: 16px; border: 2px solid #e2e8f0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-weight: 700; color: #1a202c; margin-bottom: 4px;">New CRM Software License</div>
+                            <div style="color: #718096; font-size: 13px;">IT Infrastructure • $52,000 • Submitted Dec 15, 2025</div>
+                        </div>
+                        <span class="badge success">Approved</span>
+                    </div>
+                    <div style="padding: 16px; border: 2px solid #e2e8f0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-weight: 700; color: #1a202c; margin-bottom: 4px;">Conference Sponsorship</div>
+                            <div style="color: #718096; font-size: 13px;">Marketing • $18,000 • Submitted Dec 10, 2025</div>
+                        </div>
+                        <span class="badge success">Approved</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="requestModal" class="modal">
@@ -1175,6 +1739,26 @@
                 closeModal();
             }
         });
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        function updateHistoryView(year) {
+            showNotification(`Loading budget data for FY ${year}...`, 'success');
+        }
+
+        function submitBudgetRequest(e) {
+            e.preventDefault();
+            showNotification('Budget request submitted successfully! You will receive updates via email.', 'success');
+            setTimeout(() => {
+                e.target.reset();
+            }, 2000);
+        }
     </script>
 </body>
 </html>
