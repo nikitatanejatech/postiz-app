@@ -1,0 +1,2 @@
+# postiz-app
+
